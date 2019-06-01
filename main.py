@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 INDENT = 4
 
@@ -28,7 +29,8 @@ def process_folder(folder, parent_path, parent_level_number):
         else:
             process_folder(v, path, level_number)
 
-with open('/home/jlarge/.config/google-chrome/Default/Bookmarks') as f:
+user_home = str(Path.home())
+with open(f'{user_home}/.config/google-chrome/Default/Bookmarks') as f:
     bookmarks = json.load(f)
 
 for k, v in bookmarks['roots'].items():
